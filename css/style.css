@@ -1,0 +1,694 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.size-fixer {
+    max-width: 1620px;
+    margin: 40px auto;
+}
+
+.menu {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    display: flex;               
+    justify-content: space-between; 
+    align-items: center;         
+    padding: 10px;
+    background-color: #f8f9fa;   
+    border-bottom: 1px solid #ddd; 
+}
+
+.center-section {
+    display: flex;               
+    gap: 10px;                   
+}
+
+.login-and-registration {
+    display: flex;               
+    gap: 10px;
+    margin-right: 20px;                   
+}
+
+.menu-form-account {
+    display: flex;               
+    justify-content: flex-end;
+}
+
+.log_out {
+    display: flex;               
+    justify-content: flex-end;
+    gap: 10px;  
+}
+
+.menu input {
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu input:hover {
+    background-color: #e0e0e0;   
+}
+
+.menu-form-log_out {
+    margin-right: 20px;
+}
+
+.registration-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.registration-form form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dfdfdf;
+    border-radius: 10px;
+    width: 30%;
+    height: 450px;
+    flex-direction: column;
+}
+
+.registration-form form input {
+    border-radius: 10px;
+    border-style: none;
+    width: 45%;
+    padding: 10px;
+}
+
+.registration-button {
+    color: #323a45;
+    filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.500));
+    width: 30% !important;
+    transition: color .2s linear, transform .4s;
+}
+
+.registration-button:hover {
+    color: black;
+    filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
+}
+
+/* Стиль для анімованого сповіщення */
+.error-alert {
+    position: fixed;
+    top: 55px;
+    right: 20px;
+    background-color: #f44336; /* Червоний колір для помилки */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease; /* Анімація появи */
+    z-index: 1000;
+}
+
+/* Видимий стан */
+.error-alert.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Схований стан */
+.error-alert.hidden {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+/*search start*/
+.section-search {
+    margin-top: 120px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.section-search_input {
+    border: 0;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    width: 45%;
+    height: 34px;
+    text-align: center;
+    font-size: 16px;
+    
+}
+
+.section-search_input:focus {
+    outline: none;
+}
+
+.section-search_input:focus::placeholder {
+    color: transparent;
+}
+
+.section-books {
+    margin-top: 60px;
+}
+
+.section-search_button {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    color: #323a45;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 10px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    height: 34px;
+    width: 80px;
+    align-content: center;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.section-search_button:hover {
+    color: black;
+    filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
+}
+
+@media(max-width:545px) {
+    .section-search_input {
+        width: 70%;
+    }
+    .section-books {
+        margin-top: 50px;
+    }
+    .section-search {
+        margin-top: 100px;
+        margin-bottom: 0px;
+    }
+}
+
+@media(min-width:1920px) {
+    .section-search_input {
+        max-width: 800px;
+    }
+}
+/*search end*/
+
+
+/*section-popular start*/
+.section-popular, .section-books {
+    text-align: center;
+}
+
+.section-popular_h1 {
+    font-size: 36px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+.section-popular_catalog {
+    background: #D9D9D9;
+    width: 95%;
+    padding: 20px 10px;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.section-popular_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.section-popular_element_link {
+    text-decoration: none;
+    color: #000;
+}
+
+.section-popular_element {
+    background-color: #f4f5f7;
+    border-radius: 10px;
+    color: #323a45;
+    width: 15%;
+    flex-direction: column;
+    margin: 15px;
+    padding: 15px 20px;
+    text-decoration: none;
+    transition: color .2s linear, transform .4s;
+}
+
+
+.section-popular_element:hover {
+    color: black;
+    filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
+}
+
+.section-popular_element.hide {
+    display: none;
+} 
+
+.section-popular_elem_img {
+    border-radius: 10px;
+    width: 95%;
+    height: 340px;
+    object-fit: cover;
+}
+
+.section-popular_elements_name {
+    font-size: 20px;
+    margin: 10px 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.section-popular_elements_autor {
+    font-size: 14px;
+    margin: 5px 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: grey;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media(max-width: 370px) {
+    .section-popular_element {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .section-popular_list {
+        padding: 0px 4%;
+    }
+}
+
+@media(min-width: 1920px) {
+    .section-popular_catalog {
+        max-width: 1600px;
+    }
+}
+/*section-popular end*/
+
+.book_page, .autor-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    height: 100%;  
+    padding: 20px;
+    background-color: #D9D9D9;
+}
+
+.book-info, .autor-info {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;  
+    max-width: 1000px; 
+    padding: 20px 20px; 
+    margin-top: 60px;
+    margin-bottom: 20px;
+    gap: 50px;
+    background-color: white;
+    border-radius: 20px;
+    
+}
+
+.book-info-img, .autor-info-img {
+    margin-left: 10%;
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.book-info-img img, .autor-info-img img {
+    width: 300px;  
+    height: auto;
+    border-radius: 20px;
+}
+
+.book-info-text, .autor-info-text {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-grow: 1;
+}
+
+.book-info-text h2, .autor-info-text h2 {
+    font-size: 32px;
+}
+
+.book-info-text p, .autor-info-text p {
+    font-size: 18px;
+}
+
+.coments-input {
+    width: 65%;
+    height: 10%;
+    background-color: #e7e7e7;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coments-input form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coment-text {
+    white-space: normal; 
+    word-wrap: break-word;
+    margin: 20px;
+    margin-right: 10px;
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+    border: 0px;
+    border-style: inset;
+    background: white;
+    padding: 10px;
+    
+}
+
+.coment-text:focus {
+    outline: none;
+}
+
+.send-button {
+    color: #323a45;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 0;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    height: 34px;
+    width: 86px;
+    align-content: center;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.send-button:hover {
+    color: black;
+    filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
+}
+
+.favorite {
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff89;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.favorite:hover {
+    background-color: #e0e0e0;
+}
+
+
+.book-pdf {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 80vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 20px;
+    background-color: white;
+    border-radius: 20px;
+    
+}
+
+.book-pdf iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+}
+
+.coments {
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;  
+    width: 50%;
+    max-width: 1000px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.coments h2 {
+    font-size: 28px;
+    margin-bottom: 20px;  
+}
+
+.coments-card {
+    width: 65%;
+    height: 10%;
+    background-color: #e7e7e7;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.coments-user-data {
+    margin-top: 20px;  
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.coments-user-data p {
+    margin: 5px 0;  
+}
+
+.coments-user-text{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.coments-user-text p {
+    font-size: 18px;
+}
+
+.section-authors {
+    margin-top: 40px;
+    margin-left: 28%;
+    
+}
+
+.section-authors-list{
+    margin-bottom: 20px;
+    width: 60%;
+    padding: 10px 10px;
+    background-color: #f4f5f7;
+    border-radius: 10px;
+    color: #323a45;
+    filter: drop-shadow(0 4px 4px rgba(255, 255, 255, 0.600));
+    transition: color .2s linear, transform .4s;
+}
+
+.section-authors-list:hover {
+    color: black;
+    filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
+}
+
+.section-authors a{
+    font-size: 24px;
+    text-decoration: none;
+    color: #000;
+}
+
+.autor_page {
+    margin-top: 10%;
+}
+
+/*section-about start*/
+
+.section-about {
+    background: #242424;
+    margin-top: 60px;
+    display: flex;
+}
+
+.slider {
+    width: 45%;
+    overflow: hidden;
+    position: relative;
+}
+
+.nav_positioning {
+    display: flex;
+    justify-content: center;
+}
+
+.navigation {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+}
+
+.bar {
+    height: 8px;
+    width: 30px;
+    margin: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    opacity: .7;
+    border-radius: 10px;
+    transition: all .4s ease;
+}
+
+.bar:hover {
+    opacity: .8;
+    transform: scale(1.1);
+}
+
+input[name="r"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.slides {
+    width: 400%;
+    height: 100%;
+    display: flex;
+} 
+
+.slide {
+    width: 25%;
+    transition: all .6s ease;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+#r1:checked ~ .s1 {
+    margin-left: 0;
+}
+
+#r2:checked ~ .s1 {
+    margin-left: -25%;
+}
+
+#r3:checked ~ .s1 {
+    margin-left: -50%;
+}
+
+#r4:checked ~ .s1 {
+    margin-left: -75%;
+}
+
+.section-about_img {
+    width: 50%;
+}
+
+.section-about_divForText {
+    width: 50%;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    margin: 0px auto;
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+.section-about_divForText h2 {
+    color: #fff;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 20px 0px;
+}
+
+.section-about_divForText p {
+    margin: 10px;
+}
+
+@media (max-width: 880px) {
+    .section-about {
+        display: block;
+    }
+    .slider {
+        width: 100%;
+        height: 340px;
+    }
+    .navigation {
+        bottom: 30px;
+    }
+    .slide{
+        height: 340px;
+    }
+    .section-about_divForText {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .section-about {
+        border-radius: 20px;
+        overflow: hidden;
+        width: 95%;
+        margin: 0px auto;
+        margin-top: 80px;
+    }
+}
+/*section-about end*/
+
+.user-page {
+    display: flex;
+    height: 100%;  
+    padding: 20px;
+    background-color: #D9D9D9;
+}
+
+.user-info {
+    display: flex;
+    width: 20%;  
+    max-width: 1000px; 
+    padding: 20px 20px; 
+    margin-top: 60px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.user-info h2 {
+    margin: 15px;
+    font-size: 34px;
+}
+
+.user-info p {
+    margin: 15px;
+    font-size: 20px;
+}
