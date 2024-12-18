@@ -3,6 +3,9 @@
 <div class="menu">
 
     <div class="center-section">
+        
+        <img src="imeges/Icon/icon2.png" alt="" width="40px">
+
         <form  action="index.php" method="post">
             <input type="submit" value="Головна" name="main">
         </form>
@@ -33,6 +36,9 @@
 <div class="menu">
 
     <div class="center-section">
+
+        <img src="imeges/Icon/icon2.png" alt="" width="40px">
+
         <form action="index.php" method="post">
             <input type="submit" value="Головна" name="main">
         </form>

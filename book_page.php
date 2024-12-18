@@ -93,6 +93,7 @@
 <body>
     <?php include("include/menu.php"); ?>
     <script src="js/script.js"></script>
+    
 
     <div class="book_page">
         <div class="book-info">
@@ -272,7 +273,9 @@
         </div>
     </div>
     
-    
+    <footer class="footer">
+        <p class="footer_text">Усі права захищено</p>
+    </footer>
 
 </body>
 </html>

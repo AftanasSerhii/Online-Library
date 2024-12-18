@@ -18,7 +18,7 @@
     <?php include("include/menu.php"); ?>
     <script src="js/script.js"></script>
     
-    <div class="registration-form">
+    <div class="registration-form content">
         <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
             <label for="email">Email:</label>
             <input type="text" name="email">
@@ -35,6 +35,10 @@
     <div id="error-alert" class="error-alert hidden">
         <p></p>
     </div>
+
+    <footer class="footer">
+        <p class="footer_text">Усі права захищено</p>
+    </footer>
 
 </body>
 </html>

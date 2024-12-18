@@ -40,7 +40,6 @@
     <section class="section-authors">
 
         <?php
-            
 
             if($_POST["search"]){
 
@@ -70,6 +69,10 @@
         ?>
 
     </section>
+
+    <footer class="footer">
+        <p class="footer_text">Усі права захищено</p>
+    </footer>
 
 
 </body>

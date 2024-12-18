@@ -75,6 +75,9 @@
         </div>
     </section>
     
+    <footer class="footer">
+        <p class="footer_text">Усі права захищено</p>
+    </footer>
 </body>
 </html>
 
