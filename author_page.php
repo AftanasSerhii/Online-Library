@@ -51,7 +51,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="icon" type="imege/x-icon" href="imeges/logo 2/logo-no-background.png">
+    <link rel="icon" type="imege/x-icon" href="imeges/Icon/icon2.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -77,7 +77,7 @@
         </div>
     </div>
     
-    <section class="section-books">
+    <section class="section-books content">
         <h1 class="section-popular_h1">Книги автора доступні для прочитання</h1>
         <div class="section-popular_catalog">
             <div class="section-popular_list">

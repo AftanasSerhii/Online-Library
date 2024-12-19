@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <section class="section-books">
+    <section class="section-books content">
         <h1 class="section-popular_h1">Улюблені книги</h1>
         <div class="section-popular_catalog">
             <div class="section-popular_list">

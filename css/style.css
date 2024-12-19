@@ -4,11 +4,16 @@
     
 }
 
+.book_page-head, .book_page-body {
+    height: auto;
+}
+
 html, body {
     margin: 0;
     display: flex;
     flex-direction: column;
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 .book_page-body {
@@ -118,7 +123,7 @@ body::-webkit-scrollbar {
 /* Стиль для анімованого сповіщення */
 .error-alert {
     position: fixed;
-    top: 55px;
+    top: 70px;
     right: 20px;
     background-color: #f44336; /* Червоний колір для помилки */
     color: white;
@@ -171,7 +176,7 @@ body::-webkit-scrollbar {
 }
 
 .section-books {
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .section-search_button {
@@ -323,7 +328,6 @@ body::-webkit-scrollbar {
     flex-direction: column;
     align-items: center;
     justify-content: center;  
-    height: 100%;  
     padding: 20px;
     background-color: #D9D9D9;
     width: 100%;
@@ -373,7 +377,6 @@ body::-webkit-scrollbar {
 
 .coments-input {
     width: 65%;
-    height: 10%;
     background-color: #e7e7e7;
     border-radius: 20px;
     display: flex;
@@ -479,7 +482,6 @@ body::-webkit-scrollbar {
 
 .coments-card {
     width: 65%;
-    height: 10%;
     background-color: #e7e7e7;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -676,14 +678,12 @@ input[name="r"] {
 
 .user-page {
     display: flex;
-    height: 100%;  
     padding: 20px;
     background-color: #D9D9D9;
 }
 
 .user-info {
     display: flex;
-    width: 20%;  
     max-width: 1000px; 
     padding: 20px 20px; 
     margin-top: 60px;
@@ -701,8 +701,6 @@ input[name="r"] {
     margin: 15px;
     font-size: 20px;
 }
-
-
 
 .content {
     flex: 1; 

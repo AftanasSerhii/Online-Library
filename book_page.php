@@ -82,7 +82,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head class="book_page-head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
@@ -95,7 +95,7 @@
     <script src="js/script.js"></script>
     
 
-    <div class="book_page">
+    <div class="book_page content">
         <div class="book-info">
             <div class="book-info-img">
                 <img src="<?php echo $imagePath; ?>" alt="">

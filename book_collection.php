@@ -50,7 +50,7 @@
         <input class="section-search_button" type="submit" type="search" value ="Знайти">
     </form>
 
-    <section class="section-books">
+    <section class="section-books content">
             <div class="section-popular_catalog">
                 <div class="section-popular_list">
                     <?php

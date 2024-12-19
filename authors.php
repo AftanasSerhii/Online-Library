@@ -36,7 +36,7 @@
         <input class="section-search_button" type="submit" type="search" value ="Знайти">
     </form>
 
-    <section class="section-authors">
+    <section class="section-authors content">
 
         <?php
 

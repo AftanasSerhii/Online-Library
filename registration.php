@@ -46,9 +46,6 @@
 
     </div>
 
-    <footer class="footer">
-        <p class="footer_text">Усі права захищено</p>
-    </footer>
 
 </body>
 </html>
@@ -81,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<script type=\"text/javascript\"> showError('Недійсний формат електронної пошти');</script>";
     }
     elseif(!preg_match("^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,8}$^", $password)){
-        echo "<script type=\"text/javascript\"> showError('Пароль не підходить');</script>";
+        echo "<script type=\"text/javascript\"> showError('Пароль не підходить. Пароль повинен містити одну велику літеру, одну цифру, 6 символів - Abc123');</script>";
     }
     else{
 
