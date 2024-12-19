@@ -1,5 +1,6 @@
 <?php 
-
+    include("include/config.php");
+    
     include("include/menu_handler.php");
     include("include/conect.php");
 ?>
@@ -9,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
     <link rel="icon" type="imege/x-icon" href="imeges/Icon/icon2.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -91,7 +92,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $query = "SELECT username FROM users WHERE email = '$email' and password = '$hash'";
             $username = mysqli_fetch_assoc(mysqli_query($conn, $query));
 
-            session_start();
             $_SESSION['logged_in'] = true;
             $_SESSION['username'] = $username['username'];
 
