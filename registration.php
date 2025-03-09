@@ -83,8 +83,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
 
         $hash = password_hash($password, PASSWORD_DEFAULT); 
-        $sql = "INSERT INTO users (username, birthday, email, password) 
-        VALUES ('$username','$birthday','$email','$hash')";
+        $sql = "INSERT INTO users (username, birthday, email, password, admin) 
+        VALUES ('$username','$birthday','$email','$hash', '0')";
         if(mysqli_query($conn, $sql)){
             $query = "SELECT username FROM users WHERE email = '$email' and password = '$hash'";
             $username = mysqli_fetch_assoc(mysqli_query($conn, $query));

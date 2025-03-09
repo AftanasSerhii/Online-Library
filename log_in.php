@@ -79,6 +79,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['logged_in'] = true;
                 $_SESSION['user_id'] = $user_id['user_id'];
 
+                if($row['admin']){
+                    $_SESSION['admin'] = true;
+                }
+
                 
                 header("Location: user_page.php");
             }else{

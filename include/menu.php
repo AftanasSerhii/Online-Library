@@ -1,4 +1,5 @@
-<?php if ($_SESSION['logged_in']): ?>
+
+<?php if ($_SESSION['logged_in']):?>
 
 <div class="menu">
 
@@ -18,17 +19,37 @@
             <input type="submit" value="Автори" name="authors">
         </form>
 
-    </div>
-
-    <div class="log_out">
-        <form  action="user_page.php" method="post">
-            <input type="submit" value="Профіль" name="user_page">
+        <form  action="genres.php" method="post">
+            <input type="submit" value="Жанри" name="authors">
         </form>
 
-        <form class="menu-form-log_out" action="index.php" method="post">
-            <input type="submit" value="Вийти" name="log_out">
-        </form>
     </div>
+
+    <?php if($_SESSION['admin']){?>
+        <div class="log_out">
+            <form  action="admin_page.php" method="post">
+                <input type="submit" value="Панель адміністратора" name="admin_page">
+            </form>
+
+            <form  action="user_page.php" method="post">
+                <input type="submit" value="Профіль" name="user_page">
+            </form>
+
+            <form class="menu-form-log_out" action="index.php" method="post">
+                <input type="submit" value="Вийти" name="log_out">
+            </form>
+        </div>
+    <?php } else { ?>
+        <div class="log_out">
+            <form  action="user_page.php" method="post">
+                <input type="submit" value="Профіль" name="user_page">
+            </form>
+
+            <form class="menu-form-log_out" action="index.php" method="post">
+                <input type="submit" value="Вийти" name="log_out">
+            </form>
+        </div>
+    <?php }?>
 
 </div>
 <?php else: ?>
@@ -49,6 +70,10 @@
 
         <form action="authors.php" method="post">
             <input type="submit" value="Автори" name="authors">
+        </form>
+
+        <form  action="genres.php" method="post">
+            <input type="submit" value="Жанри" name="authors">
         </form>
 
     </div>
