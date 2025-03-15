@@ -28,8 +28,8 @@
     <?php include("include/menu.php"); ?>
 
     <div class="list-of-users">
-        <form action="">
-            <?php for($i = 0; $i < 10; $i++){       
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+            <?php for($i = 0; $i < 15; $i++){       
                         $row = mysqli_fetch_assoc($result); ?>
                 <div class="line-with-user-information">
                     <p>І'мя: <?php echo $row['username']; ?></p>
@@ -39,11 +39,47 @@
                         ?>
                     </p>
                     <p>Email: <?php echo $row['email']; ?></p>
-                    <input type="submit" value="Видалити">
+
+                    <?php if($_SESSION['user_id'] != $row["user_id"]) {?>
+                        <form action="admin_page.php?user_id=<?php echo $row['user_id']; ?>" method="post">
+                            <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
+                            <input class="users-remove" type="submit" value="Видалити користувача" name="removeUser">
+                        </form>
+                    <?php }?>
                 </div> 
-            <?php } ?>
+            
         </form>
+
+        <?php } 
+                if (isset($_POST["removeUser"]) && isset($_POST['user_id'])) {
+                   $userID = $_POST['user_id'];
+
+                   echo $userID;
+                
+                   if (!empty($userID)) {
+                       $query = "DELETE FROM users WHERE user_id = ?";
+                       $stmt = $conn->prepare($query);
+
+                       if ($stmt === false) {
+                           die("Помилка підготовки запиту: " . $conn->error);
+                       }
+                    
+                       $stmt->bind_param("i", $userID); 
+                       if ($stmt->execute()) {
+                           echo '<meta http-equiv="refresh" content="0;">'; 
+                       } else {
+                           echo "Помилка при видаленні користувача: " . $stmt->error;
+                       }
+                       $stmt->close();
+                   }
+                }
+            ?>
     </div>
 
 </body>
 </html>
+
+<?php 
+
+    mysqli_close($conn);
+?>

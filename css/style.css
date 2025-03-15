@@ -452,7 +452,7 @@ body::-webkit-scrollbar {
     filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
 }
 
-.favorite {
+.favorite, .coments-remove, .users-remove {
     padding: 5px 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -461,10 +461,13 @@ body::-webkit-scrollbar {
     font-size: 14px;
 }
 
-.favorite:hover {
+.favorite:hover, .coments-remove:hover, .users-remove:hover {
     background-color: #e0e0e0;
 }
 
+.coments-remove {
+    margin: 15px;
+}
 
 .book-pdf {
     display: flex;
@@ -531,6 +534,8 @@ body::-webkit-scrollbar {
 .coments-user-text p {
     font-size: 18px;
 }
+
+ 
 
 .section-authors {
     margin-top: 40px;
@@ -757,9 +762,11 @@ input[name="r"] {
     margin-top: 10px;
     padding: 10px;
     border: #000;
+    border-radius: 10px;
     border-style: solid;
     border-width: 2px;
-    border-radius: 10px;
+
+     
 }
 
 .line-with-user-information p{
@@ -770,5 +777,5 @@ input[name="r"] {
 }
 
 .line-with-user-information input{
-    width: 100px;
+    width: 180px;
 }

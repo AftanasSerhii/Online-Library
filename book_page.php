@@ -32,6 +32,7 @@
 
     $sql2 = "
         SELECT
+            comment_id,
             users.username AS username,
             comments.date_of_publication,
             comments.comment_text,
@@ -88,6 +89,7 @@
     <title>Library</title>
     <link rel="icon" type="imege/x-icon" href="imeges/Icon/icon2.png">
     <link rel="stylesheet" href="css/style.css">
+    
 
 </head>
 <body class="book_page-body">
@@ -177,7 +179,35 @@
                                       
                         }
                     ?>
+              
                 <?php endif; ?>
+
+                <?php if( $_SESSION['admin']){ ?>
+                        <form action="book_page.php?book_id=<?php echo $row['book_id']; ?>" method="post">
+                            <input class="favorite" type="submit" value="Видалити книгу" name="removeBook">
+                        </form>
+                <?php }
+                
+                    if($_POST["removeBook"]){
+                        $query2 = "DELETE FROM books WHERE books.book_id = '$book_id';";
+
+                        if($book_id != null){
+                            $stmt2 = $conn->prepare($query2);
+
+                            if ($stmt2 === false) {
+                                die("Помилка підготовки запиту: " . $conn->error);
+                            }
+                            if ($stmt2->execute()) {
+                                echo '<meta http-equiv="refresh" content="0;url=book_collection.php">';
+                            } else {
+                                echo "Помилка при додаванні запису: " . $stmt2->error;
+                            }
+                            $stmt2->close();
+                        }
+                    }
+
+                ?>
+                     
             </div>
         </div>
 
@@ -197,25 +227,52 @@
             <h2>Відгуки</h2>
             
             <?php 
-                while($row2 = mysqli_fetch_assoc($result2)){
+                while ($row2 = mysqli_fetch_assoc($result2)) {
             ?>
-
+            
                 <div class="coments-card" id="bottom">
                     <div class="coments-user-data">
-                        <p><?php echo $row2['username'];?></p>
-                        <p><?php
-                         $dateObject = new DateTime($row2['date_of_publication']);
-                         echo $dateObject->format('d.m.Y');
+                        <p><?php echo htmlspecialchars($row2['username']); ?></p>
+                        <p><?php 
+                            $dateObject = new DateTime($row2['date_of_publication']);
+                            echo $dateObject->format('d.m.Y');
                         ?></p>
                     </div>
-
+            
                     <div class="coments-user-text">
-                        <p><?php echo $row2['comment_text'];?></p>
+                        <p><?php echo htmlspecialchars($row2['comment_text']); ?></p>
                     </div>
+            
+                    <?php if ($_SESSION['admin']) { ?>
+                        <form action="book_page.php?book_id=<?php echo $row['book_id']; ?>" method="post">
+                            <input type="hidden" name="comment_id" value="<?php echo $row2['comment_id']; ?>">
+                            <input class="coments-remove" type="submit" value="Видалити коментар" name="removeComments" >
+                        </form>
+                    <?php } ?>
                 </div>
-
             <?php 
+            }
+
+            if (isset($_POST["removeComments"]) && isset($_POST['comment_id'])) {
+                $commentID = $_POST['comment_id'];
+            
+                if (!empty($commentID)) {
+                    $query3 = "DELETE FROM comments WHERE comment_id = ?";
+                    $stmt3 = $conn->prepare($query3);
+                
+                    if ($stmt3 === false) {
+                        die("Помилка підготовки запиту: " . $conn->error);
+                    }
+                
+                    $stmt3->bind_param("i", $commentID); 
+                    if ($stmt3->execute()) {
+                        echo '<meta http-equiv="refresh" content="0;">'; 
+                    } else {
+                        echo "Помилка при видаленні коментаря: " . $stmt3->error;
+                    }
+                    $stmt3->close();
                 }
+            }
             ?>
         </div>
 
