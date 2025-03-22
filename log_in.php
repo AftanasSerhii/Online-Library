@@ -24,10 +24,8 @@
             <label for="email">Email:</label>
             <input type="text" name="email">
             <br>
-            <br>
             <label for="password">Password:</label>
             <input type="password" name="password">
-            <br>
             <br>
             <input class="registration-button" type="submit" value="Увійти">
         </form>

@@ -36,8 +36,8 @@
     <?php include("include/menu.php"); ?>
     <script src="js/script.js"></script>
 
-    <div style="margin-top: 100px;">
-        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+    <div class="add-item">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" enctype="multipart/form-data">
             <label for="bookName">Назва книги:</label>
             <input type="text" name="bookName">
             <label for="authorName">Виберіть автора:</label>
@@ -56,8 +56,12 @@
             <input type="number" name="year">
             <label for="publisher">Введіть видавця книги:</label>
             <input type="text" name="publisher">
+            <label for="bookImage">Завантажити зображення книги:</label>
+            <input type="file" name="bookImage" accept="image/*" required>
+            <label for="bookPDF">Завантажити PDF книги:</label>
+            <input type="file" name="bookPDF" accept=".pdf" required>
 
-            <input type="submit">
+            <input class="add-item-button" type="submit">
         </form>
     </div>
     
@@ -105,10 +109,41 @@
 
         $genreId = $row2['genre_id'];
 
-        if(empty($bookName)){
+        if (empty($bookName)) {
             echo "<script type=\"text/javascript\"> showError('Введіть ім\'я');</script>";
         }
-        elseif(empty($year)){
+
+        $imageTargetDir = __DIR__ . "/imeges/section-catalog/";  
+        $pdfTargetDir = __DIR__ . "/pdf/"; 
+
+        $imageExtension = pathinfo($_FILES["bookImage"]["name"], PATHINFO_EXTENSION);
+        $imageName = preg_replace("/[^a-zA-Z0-9]+/", "_", strtolower($bookName)) . "." . $imageExtension;
+        $imageTargetFilePath = $imageTargetDir . $imageName;
+
+        $pdfExtension = pathinfo($_FILES["bookPDF"]["name"], PATHINFO_EXTENSION);
+        $pdfName = preg_replace("/[^a-zA-Z0-9]+/", "_", strtolower($bookName)) . "." . $pdfExtension;  
+        $pdfTargetFilePath = $pdfTargetDir . $pdfName;
+
+
+        $allowedImageTypes = ["image/jpeg", "image/png", "image/gif"];
+        if (in_array($_FILES["bookImage"]["type"], $allowedImageTypes)) {
+            if (!copy($_FILES["bookImage"]["tmp_name"], $imageTargetFilePath)) {
+                echo "<script type=\"text/javascript\"> showError('❌ Помилка при завантаженні зображення.');</script>";
+            }
+        } else {
+            echo "<script type=\"text/javascript\"> showError('❌ Файл не є зображенням. Будь ласка, завантажте файл формату JPEG, PNG або GIF.');</script>";
+        }
+
+        $allowedPDFTypes = ["application/pdf"];
+        if (in_array($_FILES["bookPDF"]["type"], $allowedPDFTypes)) {
+            if (!copy($_FILES["bookPDF"]["tmp_name"], $pdfTargetFilePath)) {
+                echo "<script type=\"text/javascript\"> showError('❌ Помилка при завантаженні PDF файлу.');</script>";
+            }
+        } else {
+            echo "<script type=\"text/javascript\"> showError('❌ Файл не є PDF. Будь ласка, завантажте файл формату PDF.');</script>";
+        }
+
+        if(empty($year)){
             echo "<script type=\"text/javascript\"> showError('Введіть дату народження');</script>";
         }
         elseif(empty($publisher)){
@@ -125,11 +160,14 @@
                 echo "<script type=\"text/javascript\"> showError('Виникла помилка');</script>";
             }
         }
+
+        
     }
 
     if($_POST['log_out']){
         mysqli_close($conn);
         header("Location: index.php");
     }
+
     mysqli_close($conn);
 ?>

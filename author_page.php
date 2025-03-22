@@ -73,7 +73,35 @@
                 </p>
                 <p>Країна походження: <?php echo $row2['nationality']?></p>
                 <p>Біографія: <?php echo $row2['biography']?></p>
+
+                <?php if( $_SESSION['admin']){ ?>
+                    <form action="author_page.php?author_id=<?php echo $row2['author_id']; ?>" method="post">
+                        <input class="favorite" type="submit" value="Видалити автора" name="removeAuthor">
+                    </form>
+
+                <?php }
+                
+                    if($_POST["removeAuthor"]){
+                        $query2 = "DELETE FROM authors WHERE authors.author_id = '$author_id';";
+
+                        if($author_id != null){
+                            $stmt2 = $conn->prepare($query2);
+
+                            if ($stmt2 === false) {
+                                die("Помилка підготовки запиту: " . $conn->error);
+                            }
+                            if ($stmt2->execute()) {
+                                echo '<meta http-equiv="refresh" content="0;url=authors.php">';
+                            } else {
+                                echo "Помилка при додаванні запису: " . $stmt2->error;
+                            }
+                            $stmt2->close();
+                        }
+                    }
+
+                ?>
             </div>
+
         </div>
     </div>
     
@@ -99,6 +127,8 @@
                 <?php       
                     }
                 ?>
+
+                
             </div>
         </div>
     </section>

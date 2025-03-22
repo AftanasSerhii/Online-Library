@@ -62,7 +62,7 @@
 
             <div class="autor-info-text">
                 <h2><?php echo $row2['genre_name']?></h2>     
-                <p><?php echo $row2['description']?></p>
+                <p><?php echo $row2['genre_name']?> - <?php echo $row2['description']?></p>
             </div>
         </div>
     </div>
