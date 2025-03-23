@@ -38,12 +38,14 @@
 
     <section class="section-authors content">
 
-        <a href="add_author.php">
-            <div class="section-authors-list add-author">
-                <img src="imeges/admin-icons/plus.png" alt="">
-                <p>Додати автора</p>
-            </div>
-        </a>
+        <?php if($_SESSION['admin']){?>
+            <a href="add_author.php">
+                <div class="section-authors-list add-author">
+                    <img src="imeges/admin-icons/plus.png" alt="">
+                    <p>Додати автора</p>
+                </div>
+            </a>
+        <?php } ?>
 
         <?php
 

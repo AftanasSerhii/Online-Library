@@ -464,7 +464,7 @@ body::-webkit-scrollbar {
     filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
 }
 
-.favorite, .coments-remove, .users-remove {
+.favorite, .coments-remove, .users-remove, .users-makeAdmin {
     padding: 5px 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -473,7 +473,22 @@ body::-webkit-scrollbar {
     font-size: 14px;
 }
 
-.favorite:hover, .coments-remove:hover, .users-remove:hover {
+.users-remove {
+    width: 180px;
+}
+
+.users-makeAdmin {
+    width: 220px;
+    margin-left: 20px;
+}
+
+.admin-buttons {
+    display:  flex;
+    margin-top: 5px;
+    
+}
+
+.favorite:hover, .coments-remove:hover, .users-remove:hover, .users-makeAdmin:hover {
     background-color: #e0e0e0;
 }
 
@@ -798,7 +813,5 @@ input[name="r"] {
     padding-left: 2px;
 }
 
-.line-with-user-information input{
-    width: 180px;
-}
+
 

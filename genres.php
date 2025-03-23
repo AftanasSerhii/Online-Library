@@ -36,13 +36,14 @@
     </form>
 
     <section class="section-authors content">
-
-        <a href="add_genre.php">
-            <div class="section-authors-list add-author">
-                <img src="imeges/admin-icons/plus.png" alt="">
-                <p>Додати жанр</p>
-            </div>
-        </a>
+        <?php if($_SESSION['admin']){?>
+            <a href="add_genre.php">
+                <div class="section-authors-list add-author">
+                    <img src="imeges/admin-icons/plus.png" alt="">
+                    <p>Додати жанр</p>
+                </div>
+            </a>
+        <?php } ?>
 
         <?php
 

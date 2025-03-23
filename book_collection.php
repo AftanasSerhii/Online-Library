@@ -53,12 +53,14 @@
     <section class="section-books content">
             <div class="section-popular_catalog">
                 <div class="section-popular_list">
+                    <?php if($_SESSION['admin']){?>
                         <a class="section-popular_element_link section-popular_element_admin" href="add_book.php" >     
                             <div class="section-popular_element-card">
                                 <img class="section-popular_elem_img_admin" src="imeges/admin-icons/plus.png" alt="">
                                 <h3 class="section-popular_elements_name">Додати книгу</h3>
                             </div>
                         </a>
+                    <?php } ?>
 
                     <?php
                         if($_POST["search"]){
