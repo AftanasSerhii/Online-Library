@@ -41,7 +41,7 @@
                     <p>Email: <?php echo $row['email']; ?></p>
 
                     <div class="admin-buttons">
-                        <?php if($_SESSION['user_id'] != $row["user_id"]) {?>
+                        <?php if($_SESSION['user_id'] != $row["user_id"]) {  if($row["username"] != "serhii") { ?>
                             <form action="admin_page.php?user_id=<?php echo $row['user_id']; ?>" method="post">
                                 <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
                                 <input class="users-remove" type="submit" value="Видалити користувача" name="removeUser">
@@ -57,9 +57,9 @@
                                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
                                     <input class="users-makeAdmin" type="submit" value="Видалити з адміністраторів" name="removeAdmin">
                                 </form>
-                            <?php } ?>
-                        <?php }?>
-                    </div>
+                            <?php }?>
+                        <?php }  }?>
+                    </div> 
                     
                 </div> 
             
