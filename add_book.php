@@ -117,11 +117,11 @@
         $pdfTargetDir = __DIR__ . "/pdf/"; 
 
         $imageExtension = pathinfo($_FILES["bookImage"]["name"], PATHINFO_EXTENSION);
-        $imageName = preg_replace("/[^a-zA-Z0-9]+/", "_", strtolower($bookName)) . "." . $imageExtension;
+        $imageName = preg_replace("/[^a-zA-Zа-яА-Я0-9]+/u", " ", $bookName) . "." . $imageExtension;
         $imageTargetFilePath = $imageTargetDir . $imageName;
 
         $pdfExtension = pathinfo($_FILES["bookPDF"]["name"], PATHINFO_EXTENSION);
-        $pdfName = preg_replace("/[^a-zA-Z0-9]+/", "_", strtolower($bookName)) . "." . $pdfExtension;  
+        $pdfName = preg_replace("/[^a-zA-Zа-яА-Я0-9]+/u", " ", $bookName) . "." . $pdfExtension;  
         $pdfTargetFilePath = $pdfTargetDir . $pdfName;
 
 

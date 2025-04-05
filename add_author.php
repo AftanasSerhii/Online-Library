@@ -24,7 +24,7 @@
             <label for="authorName">І'мя:</label>
             <input type="text" name="authorName">
             <label for="birth_date">Дата народження:</label>
-            <input type="date" name="year">
+            <input type="date" name="birth_date">
             <label for="nationality">Країна походження:</label>
             <input type="text" name="nationality">
             <label for="biography">Біографія:</label>

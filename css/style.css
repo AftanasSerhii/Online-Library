@@ -453,7 +453,7 @@ body::-webkit-scrollbar {
     border-radius: 20px;
 }
 
-.book-info-text, .autor-info-text {
+.book-info-text, .autor-info-text, .genre-info-text {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -461,16 +461,19 @@ body::-webkit-scrollbar {
     flex-grow: 1;
 }
 
-.book-info-text h2, .autor-info-text h2 {
+.genre-info-text {
+    margin: 10px;
+}
+
+.book-info-text h2, .autor-info-text h2, .genre-info-text h2 {
     font-size: 32px;
 }
 
-.book-info-text p, .autor-info-text p {
+.book-info-text p, .autor-info-text p, .genre-info-text p {
     font-size: 18px;
 }
 
 .coments-input {
-    width: 65%;
     background-color: #e7e7e7;
     border-radius: 20px;
     display: flex;
@@ -479,11 +482,16 @@ body::-webkit-scrollbar {
     margin: 0 auto;
 }
 
+.coments-input form {
+    display: grid;
+    padding: 10px;
+}
+
 
 .coment-text {
     white-space: normal; 
     word-wrap: break-word;
-    height: 140px;
+    height: 150px;
     border-radius: 10px;
     border: 0px;
     border-style: inset;
@@ -493,7 +501,6 @@ body::-webkit-scrollbar {
     vertical-align: middle;
     align-items: center;
     margin: 20px;
-    margin-left: 8%;
 }
 
 .coment-text:focus {
@@ -614,6 +621,7 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+    padding: 10px;
 }
 
 .coments-user-text p {

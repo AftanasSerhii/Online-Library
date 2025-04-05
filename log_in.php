@@ -21,10 +21,10 @@
     
     <div class="registration-form content">
         <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-            <label for="email">Email:</label>
+            <label for="email">Електрона пошта:</label>
             <input type="text" name="email">
             <br>
-            <label for="password">Password:</label>
+            <label for="password">Пароль:</label>
             <input type="password" name="password">
             <br>
             <input class="registration-button" type="submit" value="Увійти">
