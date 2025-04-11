@@ -105,11 +105,11 @@
         </div>
 
         <div class="login-and-registration">
-            <form action="index.php" method="post">
+            <form action="log_in.php" method="post">
                 <input type="submit" value="Увійти" name="log_in">
             </form>
 
-            <form action="index.php" method="post">
+            <form action="registration.php" method="post">
                 <input type="submit" value="Реєстрація" name="registration">
             </form>
         </div>
@@ -135,11 +135,11 @@
             <input type="submit" value="Жанри" name="genres">
         </form>
 
-        <form action="index.php" method="post">
+        <form action="log_in.php" method="post">
             <input type="submit" value="Увійти" name="log_in">
         </form>
 
-        <form action="index.php" method="post">
+        <form action="registration.php" method="post">
             <input type="submit" value="Реєстрація" name="registration">
         </form>
         

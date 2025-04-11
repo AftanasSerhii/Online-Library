@@ -55,6 +55,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <?php include("include/menu.php"); ?>
 
     <div class="autor-page">
@@ -75,7 +76,7 @@
                     while($row = mysqli_fetch_assoc($result)){       
                         include("include/img.php");               
                 ?>   
-                    <a class="section-popular_element_link section-popular_element" href="book_page.php?book_id=<?php echo $row['book_id']; ?>" >     
+                    <a class="section-popular_element_link section-popular_element" href="book_page.php?book_id=<?php echo $row['book_id']; ?>">     
                         <div class="section-popular_element-card">
 
                             <img class="section-popular_elem_img" src="<?php echo $imagePath; ?>" alt="">
@@ -92,5 +93,6 @@
             </div>
         </div>
     </section>
+
 </body>
 </html>

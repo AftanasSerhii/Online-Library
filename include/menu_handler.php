@@ -1,11 +1,6 @@
 <?php 
-    if($_POST["main"]){
-        header("Location: index.php");
-    }
-    elseif($_POST["books"]){
-        header("Location: book_collection.php");
-    }
-    elseif($_POST["registration"]){
+    
+    if($_POST["registration"]){
         header("Location: registration.php");
     }
     elseif($_POST["log_in"]){
@@ -20,6 +15,11 @@
         header("Location: index.php");
         session_destroy();
     }
-    
-
 ?>
+
+
+
+
+
+
+

@@ -33,7 +33,7 @@
             <label for="password">Пароль:</label>
             <input type="password" name="password">
             <br>
-            <input  class="registration-button" type="submit" value="Реєстрація">
+            <input  class="registration-button" type="submit" value="Зареєструватись">
         </form>
 
         <div id="error-alert" class="error-alert hidden">
@@ -56,28 +56,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
     
-    if(empty($username)){
-        echo "<script type=\"text/javascript\"> showError('Введіть ім\'я');</script>";
-    }
-    elseif(empty($birthday)){
-        echo "<script type=\"text/javascript\"> showError('Введіть дату народження');</script>";
-    }
-    elseif(empty($email)){
-        echo "<script type=\"text/javascript\"> showError('Введіть Email');</script>";
-    }
-    elseif(empty($password)){
-        echo "<script type=\"text/javascript\"> showError('Введіть пароль');</script>";
-    }elseif(!preg_match("^[A-Za-z\d]{5,10}$^", $username)){
-        echo "<script type=\"text/javascript\"> showError('Ім'я не відповідає вимогам');</script>";
-    }
-    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        echo "<script type=\"text/javascript\"> showError('Недійсний формат електронної пошти');</script>";
-    }
+    if(empty($username)){ echo "<script type=\"text/javascript\"> showError('Введіть ім\'я');</script>"; }
+    elseif(empty($birthday)){ echo "<script type=\"text/javascript\"> showError('Введіть дату народження');</script>"; }
+    elseif(empty($email)){ echo "<script type=\"text/javascript\"> showError('Введіть Email');</script>"; }
+    elseif(empty($password)){ echo "<script type=\"text/javascript\"> showError('Введіть пароль');</script>"; }
+    elseif(!preg_match("^[A-Za-z\d]{5,10}$^", $username)){ echo "<script type=\"text/javascript\"> showError('Ім'я не відповідає вимогам');</script>"; }
+    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){ echo "<script type=\"text/javascript\"> showError('Недійсний формат електронної пошти');</script>";}
     elseif(!preg_match("^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,8}$^", $password)){
-        echo "<script type=\"text/javascript\"> showError('Пароль не підходить. Пароль повинен містити одну велику літеру, одну цифру, 6 символів - Abc123');</script>";
+        echo "<script type=\"text/javascript\"> 
+                showError('Пароль не підходить. Пароль повинен містити одну велику літеру, одну цифру, 6 символів - Abc123');
+              </script>";
     }
     else{
-
         $hash = password_hash($password, PASSWORD_DEFAULT); 
         $sql = "INSERT INTO users (username, birthday, email, password, admin) 
         VALUES ('$username','$birthday','$email','$hash', '0')";
@@ -92,8 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         else{
             echo "<script type=\"text/javascript\"> showError('Пароль не підходить');</script>";
-        }
-        
+        }       
     }
 }
 

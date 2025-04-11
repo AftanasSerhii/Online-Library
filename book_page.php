@@ -293,8 +293,8 @@
             </div>
 
             <?php 
-   
                if($_POST["send"]){
+
                    $user_id = $_SESSION['user_id'];
                    $text = $_POST["text"];
                    $query = "INSERT INTO comments (user_id, date_of_publication, comment_text, book_id) VALUES (?, ?, ?, ?)";
@@ -325,6 +325,7 @@
                    }                
                }
             ?>
+            
         </div>
     </div>
     

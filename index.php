@@ -88,8 +88,12 @@
 
             <div class="section-about_divForText">
                 <h2 >Про нас</h2>
-                <p>Ми — сучасна онлайн бібліотека, яка відкриває безліч можливостей для здобуття знань, розвитку та культурного зростання. Наша мета — стати вашим надійним партнером у світі інформації, де ви завжди знайдете відповіді на свої запитання, розширите свої знання та відкриєте нові горизонти.</p>
-                <p>Запрошуємо вас скористатися всіма можливостями нашої онлайн бібліотеки. Разом ми будуємо культурну спільноту, де кожен може знайти своє місце та розширити свій світогляд.</p>
+                <p>Ми — сучасна онлайн бібліотека, яка відкриває безліч можливостей для здобуття знань, розвитку та культурного зростання. Наша мета — стати вашим надійним 
+                    партнером у світі інформації, де ви завжди знайдете відповіді на свої запитання, розширите свої знання та відкриєте нові горизонти.
+                </p>
+                <p>Запрошуємо вас скористатися всіма можливостями нашої онлайн бібліотеки. Разом ми будуємо культурну спільноту, де кожен може знайти своє місце та розширити
+                     свій світогляд.
+                </p>
             </div>
         </section>
     </div>
@@ -103,7 +107,7 @@
                         $row = mysqli_fetch_assoc($result);
                         include("include/img.php");               
                 ?>        
-                    <a class="section-popular_element_link section-popular_element" href="book_page.php?book_id=<?php echo $row['book_id']; ?>" >     
+                    <a class="section-popular_element_link section-popular_element" href="book_page.php?book_id=<?php echo $row['book_id']; ?>">     
                         <div class="section-popular_element-card">
                             <img class="section-popular_elem_img" src="<?php echo $imagePath; ?>" alt="">
                             <h3 class="section-popular_elements_name"><?php echo $row['title']?></h3>
@@ -126,7 +130,7 @@
                         $row = mysqli_fetch_assoc($result2);
                         include("include/img.php");               
                 ?>        
-                    <a class="section-popular_element_link section-popular_element" href="book_page.php?book_id=<?php echo $row['book_id']; ?>" >     
+                    <a class="section-popular_element_link section-popular_element" href="book_page.php?book_id=<?php echo $row['book_id']; ?>">     
                         <div class="section-popular_element-card">
                             <img class="section-popular_elem_img" src="<?php echo $imagePath; ?>" alt="">
                             <h3 class="section-popular_elements_name"><?php echo $row['title']?></h3>
