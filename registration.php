@@ -72,16 +72,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "INSERT INTO users (username, birthday, email, password, admin) 
         VALUES ('$username','$birthday','$email','$hash', '0')";
         if(mysqli_query($conn, $sql)){
-            $query = "SELECT username FROM users WHERE email = '$email' and password = '$hash'";
-            $username = mysqli_fetch_assoc(mysqli_query($conn, $query));
+            $query = "SELECT user_id FROM users WHERE email = '$email'";
+            $user_id = mysqli_fetch_assoc(mysqli_query($conn, $query));
 
             $_SESSION['logged_in'] = true;
-            $_SESSION['username'] = $username['username'];
+            $_SESSION['user_id'] = $user_id['user_id'];
+
 
             header("Location: user_page.php");
         }
         else{
-            echo "<script type=\"text/javascript\"> showError('Пароль не підходить');</script>";
+            echo "<script type=\"text/javascript\"> showError('Користувач уже існує');</script>";
         }       
     }
 }
