@@ -777,6 +777,12 @@ input[name="r"] {
     margin: 10px;
 }
 
+@media (max-width: 500px) {
+    .coments-card{
+        width: 100%;
+    }
+}
+
 @media (max-width: 880px) {
     .section-about {
         display: block;
@@ -794,6 +800,25 @@ input[name="r"] {
     .section-about_divForText {
         width: 100%;
         padding: 10px;
+    }
+    .coments-remove{
+        width: 80%;
+    }
+    
+}
+
+@media (max-width: 1200px) {
+    .book-info{
+        display: block;
+    }
+    .book-info-img img{
+        width: 100%;
+    }
+    .autor-info {
+        display: block;
+    }
+    .autor-info-img img {
+        width: 100%;
     }
 }
 
