@@ -75,7 +75,7 @@ body::-webkit-scrollbar {
     
 }
 
-.menu input {
+.menu input, .change-user-data-link a{
     padding: 5px 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -84,7 +84,7 @@ body::-webkit-scrollbar {
     font-size: 14px;
 }
 
-.menu input:hover {
+.menu input:hover, .change-user-data-link a:hover{
     background-color: #e0e0e0;
 }
 
@@ -181,7 +181,7 @@ body::-webkit-scrollbar {
     padding: 10px;
 }
 
-.registration-button, .add-item-button {
+.registration-button, .add-item-button, .delate-item-button {
     color: #323a45;
     filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.500));
     width: 30% !important;
@@ -191,6 +191,11 @@ body::-webkit-scrollbar {
 
 .registration-button:hover, .add-item-button:hover {
     color: black;
+    filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
+}
+
+.delate-item-button:hover {
+    color: red;
     filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
 }
 
@@ -857,6 +862,31 @@ input[name="r"] {
 .user-info p {
     margin: 15px;
     font-size: 20px;
+}
+
+.user-info-text {
+    display: block;
+    margin: 20px;
+}
+
+.user-img {
+    margin: 20px;
+}
+
+.user-img img {
+    width: 300px;
+    border-radius: 40px;
+}
+
+.change-user-data-link {
+    margin-top: 50px;
+}
+
+.change-user-data-link a{
+    margin-left: 35px;
+    text-decoration: none;
+    color: inherit;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .content {

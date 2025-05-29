@@ -37,4 +37,17 @@ function changeName(){
     searchButton.value = "Скасувати";
 }
 
+function confirmDelete() {
+    if (confirm("Ви впевнені, що хочете видалити профіль?")) {
+        const form = document.querySelector("form");
+        const hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = "removeUser";
+        hiddenInput.value = "1";
+        form.appendChild(hiddenInput);
+        form.submit();
+    }
+}
+
+
 

@@ -35,16 +35,43 @@
 <body>
     <?php include("include/menu.php"); ?>
 
+    <?php 
+        $imageDir = 'imeges/user-img/';
+        $extensions = ['jpg', 'png', 'gif'];
+        $imagePath = '';
+
+        foreach ($extensions as $ext) {
+            $path = $imageDir . $user_id . '.' . $ext;
+            if (file_exists($path)) {
+                $imagePath = $path;
+                break;
+            }
+        }
+
+        if (!$imagePath) {
+            $imagePath = 'imeges/icon/icon2.png';
+        }
+    ?>
+
     <div class="user-page">
         <div class="user-info">
+            <div class="user-img">
+                <img src="<?= $imagePath ?>" alt="Фото профілю">
+            </div>
             <div class="user-info-text">
-                <h2>І'мя: <?php echo $row2['username']?></h2>
-                <p>Дата народження: <?php 
-                    $dateObject = new DateTime($row2['birthday']);
-                    echo $dateObject->format('d.m.Y');
-                    ?>
-                </p>
-                <p>Email: <?php echo $row2['email']?></p>
+                <div class="user-info-text">
+                    <h2>І'мя: <?php echo $row2['username']?></h2>
+                    <p>Дата народження: 
+                        <?php 
+                            $dateObject = new DateTime($row2['birthday']);
+                            echo $dateObject->format('d.m.Y');
+                        ?>
+                    </p>
+                    <p>Email: <?php echo $row2['email']?></p>
+                </div>
+                <div class="change-user-data-link">
+                    <a href="change_user_data.php">Редагувати профіль</a>
+                </div>
             </div>
         </div>
     </div>
@@ -80,4 +107,6 @@
     </footer>
 </body>
 </html>
+
+
 
