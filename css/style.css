@@ -611,8 +611,24 @@ body::-webkit-scrollbar {
     margin-bottom: 20px;
 }
 
+.coments-card-user-info {
+    display: flex;
+}
+
+.coments-card-user-img {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.coments-card-user-img img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .coments-user-data {
-    margin-top: 20px;  
+    margin-top: 10px;  
     padding: 10px;
     border-radius: 5px;
     width: 100%;
@@ -667,8 +683,13 @@ body::-webkit-scrollbar {
     filter: drop-shadow(0 4px 4px rgba(50,56,69,.2));
 }
 
-.section-authors a{
+.section-authors a {
     font-size: 24px;
+    text-decoration: none;
+    color: #000;
+}
+
+.coments-user-data a {
     text-decoration: none;
     color: #000;
 }

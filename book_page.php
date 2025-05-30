@@ -33,6 +33,7 @@
     $sql2 = "
         SELECT
             comment_id,
+            comments.user_id,
             users.username AS username,
             comments.date_of_publication,
             comments.comment_text,
@@ -68,6 +69,7 @@
     $result3 = mysqli_query($conn, $sql3);
 
     $row = mysqli_fetch_assoc($result);
+
 
     $is_added = false;
 
@@ -228,17 +230,39 @@
             
             <?php 
                 while ($row2 = mysqli_fetch_assoc($result2)) {
+
+                    $imageDir = 'imeges/user-img/';
+                    $extensions = ['jpg', 'png', 'gif'];
+                    $imagePathForUser = '';
+
+                    foreach ($extensions as $ext) {
+                        $path = $imageDir . $row2['user_id'] . '.' . $ext;
+                        if (file_exists($path)) {
+                            $imagePathForUser = $path;
+                            break;
+                        }
+                    }
+                
+                    if (!$imagePathForUser) {
+                        $imagePathForUser = 'imeges/icon/icon2.png';
+                    }
             ?>
             
                 <div class="coments-card" id="bottom">
-                    <div class="coments-user-data">
-                        <p><?php echo htmlspecialchars($row2['username']); ?></p>
-                        <p><?php 
-                            $dateObject = new DateTime($row2['date_of_publication']);
-                            echo $dateObject->format('d.m.Y');
-                        ?></p>
+                    <div class="coments-card-user-info">
+                        <div class="coments-card-user-img">
+                            <a href="user_page_for_other_users.php?user_id=<?php echo $row2['user_id']; ?>"><img src="<?= $imagePathForUser ?>" alt="Фото профілю"></a>  
+                        </div>
+                                   
+                        <div class="coments-user-data">
+                            <a href="user_page_for_other_users.php?user_id=<?php echo $row2['user_id']; ?>"><?php echo htmlspecialchars($row2['username']); ?></a>
+                            <p><?php 
+                                $dateObject = new DateTime($row2['date_of_publication']);
+                                echo $dateObject->format('d.m.Y');
+                            ?></p>
+                        </div>
                     </div>
-            
+                    
                     <div class="coments-user-text">
                         <p><?php echo htmlspecialchars($row2['comment_text']); ?></p>
                     </div>
