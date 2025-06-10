@@ -28,6 +28,10 @@ function scroll() {
             window.scrollTo(0, parseInt(scrollPosition, 10));
         }
     });
+
+    window.addEventListener("beforeunload", function() {
+        localStorage.setItem("scrollPosition", window.scrollY);
+    });
 }
 
 

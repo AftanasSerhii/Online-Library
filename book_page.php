@@ -248,7 +248,7 @@
                     }
             ?>
             
-                <div class="coments-card" id="bottom">
+                <div class="coments-card">
                     <div class="coments-card-user-info">
                         <div class="coments-card-user-img">
                             <?php
@@ -324,7 +324,7 @@
 
         
 
-        <div class="coments">
+        <div class="coments" id="comments">
             <h2>Поділіться враженнями</h2>
         
             <div class="coments-input">
@@ -362,8 +362,8 @@
                     
                         $stmt->bind_param("issi", $user_id, date("Y-m-d"), $text, $book_id);
                         if ($stmt->execute()) {
-                            echo "<meta http-equiv=\"refresh\" content=\"0\">";
-                            echo "<script type=\"text/javascript\"> scroll() </script>";
+                            echo "<meta http-equiv=\"refresh\" content=\"0;url=book_page.php?book_id=$book_id#comments\">";
+                            
                         } else {
                             echo "<script type=\"text/javascript\"> showError('Помилка при додаванні запису!');</script>";
                         }
