@@ -641,7 +641,7 @@ body::-webkit-scrollbar {
 .coments-user-text{
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     padding: 10px;
 }
 
@@ -891,12 +891,13 @@ input[name="r"] {
 }
 
 .user-img {
-    margin: 20px;
+    margin: 10px;
 }
 
 .user-img img {
-    width: 300px;
-    border-radius: 40px;
+    width: 250px;
+    height: 250px;
+    border-radius: 150px;
 }
 
 .change-user-data-link {

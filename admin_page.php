@@ -52,7 +52,7 @@
                 </p>
                 <p>Email: <?php echo $row['email']; ?></p>
                 <div class="admin-buttons">
-                    <?php if($_SESSION['user_id'] != $row["user_id"]) {  if($row["username"] != "serhii") { ?>
+                    <?php if($_SESSION['user_id'] != $row["user_id"]) {  if($row['user_id'] != 91) { ?>
                         <form action="admin_page.php?user_id=<?php echo $row['user_id']; ?>" method="post">
                             <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
                             <input class="users-remove" type="submit" value="Видалити користувача" name="removeUser">

@@ -251,11 +251,33 @@
                 <div class="coments-card" id="bottom">
                     <div class="coments-card-user-info">
                         <div class="coments-card-user-img">
-                            <a href="user_page_for_other_users.php?user_id=<?php echo $row2['user_id']; ?>"><img src="<?= $imagePathForUser ?>" alt="Фото профілю"></a>  
+                            <?php
+                                if($row2["user_id"] == $user_id) {
+                            ?>
+                                <a href="user_page.php"><img src="<?= $imagePathForUser ?>" alt="Фото профілю"></a>
+                            <?php
+                                } else {
+                            ?> 
+                                <a href="user_page_for_other_users.php?user_id=<?php echo $row2['user_id']; ?>"><img src="<?= $imagePathForUser ?>" alt="Фото профілю"></a>
+                            <?php 
+                                }
+                            ?>
                         </div>
                                    
                         <div class="coments-user-data">
-                            <a href="user_page_for_other_users.php?user_id=<?php echo $row2['user_id']; ?>"><?php echo htmlspecialchars($row2['username']); ?></a>
+
+                            <?php
+                                if($row2["user_id"] == $user_id) {
+                            ?>
+                                <a href="user_page.php?>"><?php echo htmlspecialchars($row2['username']); ?></a>
+                            <?php
+                                } else {
+                            ?> 
+                                <a href="user_page_for_other_users.php?user_id=<?php echo $row2['user_id']; ?>"><?php echo htmlspecialchars($row2['username']); ?></a>
+                            <?php 
+                                }
+                            ?>
+                            
                             <p><?php 
                                 $dateObject = new DateTime($row2['date_of_publication']);
                                 echo $dateObject->format('d.m.Y');
@@ -270,7 +292,7 @@
                     <?php if ($_SESSION['admin']) { ?>
                         <form action="book_page.php?book_id=<?php echo $row['book_id']; ?>" method="post">
                             <input type="hidden" name="comment_id" value="<?php echo $row2['comment_id']; ?>">
-                            <input class="coments-remove" type="submit" value="Видалити коментар" name="removeComments" >
+                            <input class="coments-remove" type="submit" value="Видалити відгук" name="removeComments" >
                         </form>
                     <?php } ?>
                 </div>

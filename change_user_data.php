@@ -3,16 +3,20 @@
     include("include/menu_handler.php");
     include("include/conect.php");
 
+    $user_id = $_SESSION['user_id'];
+
     $sql = "
         SELECT 
             *
         FROM 
             users
+        WHERE
+            user_id = '$user_id'
     ";
 
 
     $result = mysqli_query($conn, $sql);
-
+    $row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -33,16 +37,18 @@
         <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post" enctype="multipart/form-data">
             <label for="userImage">Завантажити фото профілю:</label>
             <input type="file" name="userImage" accept="image/*">
-            <label for="userName">Введіть нове і'мя:</label>
-            <input type="text" name="userName">
+            <label for="userName">Введіть нове і'мя:  </label>
+            <input type="text" name="userName" value = "<?php echo $row["username"] ?>">
             <label for="dateOfBirth">Введіть дату народження:</label>
-            <input type="date" name="dateOfBirth">
+            <input type="date" name="dateOfBirth" value = "<?php echo $row["birthday"] ?>">
             <label for="email">Введіть новий Email:</label>
-            <input type="text" name="email">
+            <input type="text" name="email" value = "<?php echo $row["email"] ?>">
             
 
             <input class="add-item-button" type="submit">
-            <input class="delate-item-button" type="button" value="Видалити профіль" onclick="confirmDelete()">
+            <?php if($row["user_id"] != 91) { ?>
+                <input class="delate-item-button" type="button" value="Видалити профіль" onclick="confirmDelete()">
+            <?php } ?>
         </form>
         
     </div>
@@ -61,23 +67,23 @@
         $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_SPECIAL_CHARS);
         $dateOfBirth = filter_input(INPUT_POST, "dateOfBirth", FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
-        $userId = $_SESSION['user_id'];
-
-        $row = mysqli_fetch_assoc($result);
 
         $imageTargetDir = __DIR__ . "/imeges/user-img/";
         
         $imageExtension = pathinfo($_FILES["userImage"]["name"], PATHINFO_EXTENSION);
-        $imageName = preg_replace("/[^a-zA-Zа-яА-Я0-9]+/u", " ", $userId) . "." . $imageExtension;
+        $imageName = preg_replace("/[^a-zA-Zа-яА-Я0-9]+/u", " ", $user_id) . "." . $imageExtension;
         $imageTargetFilePath = $imageTargetDir . $imageName;
 
         $allowedImageTypes = ["image/jpeg", "image/png", "image/gif"];
-        if (in_array($_FILES["userImage"]["type"], $allowedImageTypes)) {
+        if(!empty($imageExtension)) {
+            if (in_array($_FILES["userImage"]["type"], $allowedImageTypes)) {
             if (!copy($_FILES["userImage"]["tmp_name"], $imageTargetFilePath)) {
                 echo "<script type=\"text/javascript\"> showError('Помилка при завантаженні зображення.');</script>";
             }
-        } else {
-            echo "<script type=\"text/javascript\"> showError('Файл не є зображенням. Будь ласка, завантажте файл формату JPEG, PNG або GIF.');</script>";
+            } else {
+                echo "<script type=\"text/javascript\"> showError('Файл не є зображенням. Будь ласка, завантажте файл формату JPEG, PNG або GIF.');</script>";
+            }
+
         }
 
         if(empty($userName)){
@@ -89,7 +95,7 @@
         elseif(empty($email)){
             echo "<script type=\"text/javascript\"> showError('Введіть Email');</script>";
         }else{
-            $sql2 = "UPDATE users SET username = '$userName', birthday = '$dateOfBirth', email = '$email' WHERE user_id = '$userId'";
+            $sql2 = "UPDATE users SET username = '$userName', birthday = '$dateOfBirth', email = '$email' WHERE user_id = '$user_id'";
 
             if(mysqli_query($conn, $sql2)){
                 echo '<meta http-equiv="refresh" content="0;url=user_page.php">';
@@ -102,10 +108,8 @@
     }
 
     if (isset($_POST["removeUser"])) {
-                   
-         $userID = $_SESSION['user_id'];
-    
-        if (!empty($userID)) {
+                
+        if (!empty($user_id)) {
             $query1 = "DELETE FROM comments WHERE user_id = ?";
             $query2 = "DELETE FROM users WHERE user_id = ?";
              

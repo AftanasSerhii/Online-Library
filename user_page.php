@@ -56,7 +56,7 @@
     <div class="user-page">
         <div class="user-info">
             <div class="user-img">
-                <img src="<?= $imagePath ?>" alt="Фото профілю">
+                <img src="<?= $imagePath . '?' . time(); ?>" alt="Фото профілю">
             </div>
             <div class="user-info-text">
                 <div class="user-info-text">
